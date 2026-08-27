@@ -21,11 +21,11 @@ public class ProductAddRequestValidator : AbstractValidator<ProductAddRequest>
             .GreaterThan(0)
             .WithMessage("Price must be greater than 0.");
 
-        RuleFor(x => x.Category)
+        RuleFor(x => x.CategoryId)
             .NotEmpty()
             .WithMessage("CategoryId is required.");
 
-        RuleFor(x => x.Brand)
+        RuleFor(x => x.BrandId)
             .NotEmpty()
             .WithMessage("BrandId is required.");
     }

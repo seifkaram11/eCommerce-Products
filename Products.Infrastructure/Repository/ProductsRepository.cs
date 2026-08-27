@@ -1,32 +1,61 @@
+using Microsoft.EntityFrameworkCore;
 using Products.Core.Entitys;
 using Products.Core.RepositoryContrast;
+using Products.Infrastructure.Data;
 
 namespace Products.Infrastructure.Repository;
 
 class ProductsRepository : IProductsRepository
 {
-    public Task<bool> AddProductAsync(Product product)
+    ProductDbContext _productDbContext;
+
+    public ProductsRepository(ProductDbContext productDbContext)
     {
-        throw new NotImplementedException();
+        _productDbContext = productDbContext;
     }
 
-    public Task<bool> DeleteProductAsync(Guid id)
+    public async Task<Product?> AddProductAsync(Product product)
     {
-        throw new NotImplementedException();
+        if(product is null)return null;
+
+        var res=await _productDbContext.Products.AddAsync(product);
+        return res.Entity;
     }
 
-    public Task<Product> GetProductByConditionAsync(Func<Product, bool> func)
+    public async Task<Product?> DeleteProductAsync(Guid id)
     {
-        throw new NotImplementedException();
+        var product=await _productDbContext.Products.FirstOrDefaultAsync(_=>_.ProductId==id);
+        if(product is null) return null;
+        var res=_productDbContext.Products.Remove(product);
+        return res.Entity;
     }
 
-    public Task<IEnumerable<Product>> GetProductsAsync()
+    public async Task<IEnumerable<Product>> GetProductByConditionAsync(Func<Product, bool> func)
     {
-        throw new NotImplementedException();
+        return _productDbContext.Products.Where(func);
     }
 
-    public Task<bool> UpdateProductAsync(Product product)
+    public async Task<IEnumerable<Product>> GetProductsAsync()
     {
-        throw new NotImplementedException();
+        return _productDbContext.Products;
+    }
+
+    public async Task<Product?> UpdateProductAsync(Product product)
+    {
+        if(product is null)return null;
+
+        var numOfRowsEffected=await _productDbContext.Products.Where(_=>_.ProductId==product.ProductId).ExecuteUpdateAsync(setters => setters
+            .SetProperty(p => p.Name, product.Name)
+            .SetProperty(p => p.Price, product.Price)
+            .SetProperty(p => p.Description, product.Description)
+            .SetProperty(p => p.CategoryId, product.CategoryId)
+            .SetProperty(p => p.BrandId, product.BrandId));
+
+        return numOfRowsEffected==1? product:null;
+    }
+
+    public async Task<int> SaveChangesAsync()
+    {
+        return _productDbContext.SaveChanges();
     }
 }

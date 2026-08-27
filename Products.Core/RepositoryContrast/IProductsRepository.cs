@@ -5,8 +5,9 @@ namespace Products.Core.RepositoryContrast;
 public interface IProductsRepository
 {
     Task<IEnumerable<Product>> GetProductsAsync();
-    Task<Product> GetProductByConditionAsync(Func<Product,bool> func);
-    Task<bool> AddProductAsync(Product product);
-    Task<bool> UpdateProductAsync(Product product);
-    Task<bool> DeleteProductAsync(Guid id);
+    Task<IEnumerable<Product>> GetProductByConditionAsync(Func<Product,bool> func);
+    Task<Product?> AddProductAsync(Product product);
+    Task<Product?> UpdateProductAsync(Product product);
+    Task<Product?> DeleteProductAsync(Guid id);
+    Task<int> SaveChangesAsync();
 }

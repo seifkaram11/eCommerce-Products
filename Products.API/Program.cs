@@ -1,10 +1,18 @@
+using FluentValidation.AspNetCore;
 using Products.API.Middleware;
+using Products.Core;
+using Products.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddCore();
+builder.Services.AddInfrastructure();
+
+builder.Services.AddFluentValidationAutoValidation();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
