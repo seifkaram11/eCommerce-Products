@@ -6,8 +6,7 @@ namespace Products.Core.ServiceContrast;
 public interface IProductService
 {
     Task<IQueryable<ProductResponse>> RetrieveAllProductsAsync();
-    Task<ProductResponse> RetrieveProductByIDAsync(Guid id);
-    Task<IQueryable<ProductResponse>> RetrieveProductByNameAsync(string name);
+    Task<ProductResponse?> RetrieveProductByIDAsync(Guid id);
     Task<ProductResponse?> AddProductAsync(ProductAddRequest request);
     Task<ProductResponse?> UpdateProductAsync(Guid id,ProductUpdateRequest product);
     Task<ProductResponse?> DeleteProductAsync(Guid id);

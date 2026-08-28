@@ -67,22 +67,12 @@ class ProductService : IProductService
         return res.AsQueryable();
     }
 
-    async Task<IQueryable<ProductResponse>> RetrieveSpecificProductsAsync(Func<Product, bool> func)
-    {
-        var products=await _productsRepository.GetProductByConditionAsync(func);
-        var res=products.Select(_=>_mapper.Map<ProductResponse>(_));
-        return res.AsQueryable();
-    }
-
-    public async Task<ProductResponse> RetrieveProductByIDAsync(Guid id)
+    public async Task<ProductResponse?> RetrieveProductByIDAsync(Guid id)
     {
         var res=await _productsRepository.GetProductByConditionAsync(_=>_.ProductId==id);
         var theResponse=res.FirstOrDefault(_=>true);
+        if(theResponse is null)return null;
         return _mapper.Map<ProductResponse>(theResponse);
-    }
-    public async Task<IQueryable<ProductResponse>> RetrieveProductByNameAsync(string name)
-    {
-        return await RetrieveSpecificProductsAsync(_=>_.Name==name);
     }
 
     public async Task<IEnumerable<ProductResponse>> FilteringAsync

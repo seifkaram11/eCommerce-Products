@@ -19,7 +19,9 @@ public class ProductController:ControllerBase
     [HttpGet("{id:guid}")]
     public async Task<ActionResult> GetProductById(Guid id)
     {
-        return Ok(await _productService.RetrieveProductByIDAsync(id));
+        var response=await _productService.RetrieveProductByIDAsync(id);
+        if(response is null)return BadRequest();
+        return Ok();
     }
 
     [HttpGet]
@@ -43,6 +45,7 @@ public class ProductController:ControllerBase
     public async Task<ActionResult> AddProduct(ProductAddRequest request)
     {
         var response=await _productService.AddProductAsync(request);
+        if(response is null)return BadRequest();
         return Ok(response);
     }
 
@@ -50,6 +53,7 @@ public class ProductController:ControllerBase
     public async Task<ActionResult> UpdateProduct(Guid id,ProductUpdateRequest updateRequest)
     {
         var response=await _productService.UpdateProductAsync(id,updateRequest);
+        if(response is null)return BadRequest();
         return Ok(response);
     }
 
@@ -57,6 +61,7 @@ public class ProductController:ControllerBase
     public async Task<ActionResult> DeleteProduct(Guid id)
     {
         var response=await _productService.DeleteProductAsync(id);
+        if(response is null)return BadRequest("the product is not found");
         return Ok(response);
     }
 }
