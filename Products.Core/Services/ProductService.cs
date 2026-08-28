@@ -2,6 +2,7 @@ using AutoMapper;
 using FluentValidation;
 using Products.Core.DTOs;
 using Products.Core.Entitys;
+using Products.Core.Enums;
 using Products.Core.RepositoryContrast;
 using Products.Core.ServiceContrast;
 
@@ -44,7 +45,7 @@ class ProductService : IProductService
         return  numOfRowsEffected>0? _mapper.Map<ProductResponse>(product):null;
     }
 
-    public async Task<ProductResponse?> UpdateProductAsync(ProductUpdateRequest request)
+    public async Task<ProductResponse?> UpdateProductAsync(Guid id,ProductUpdateRequest request)
     {
         if(request is null)return null;
 
@@ -53,6 +54,7 @@ class ProductService : IProductService
             return null;
 
         var product=_mapper.Map<Product>(request);
+        product.ProductId=id;
         var res=await _productsRepository.UpdateProductAsync(product);
         int numOfRowsEffected=await _productsRepository.SaveChangesAsync();
         return numOfRowsEffected>0?_mapper.Map<ProductResponse>(res):null;
@@ -65,10 +67,107 @@ class ProductService : IProductService
         return res.AsQueryable();
     }
 
-    public async Task<IQueryable<ProductResponse>> RetrieveSpecificProductsAsync(Func<Product, bool> func)
+    async Task<IQueryable<ProductResponse>> RetrieveSpecificProductsAsync(Func<Product, bool> func)
     {
         var products=await _productsRepository.GetProductByConditionAsync(func);
         var res=products.Select(_=>_mapper.Map<ProductResponse>(_));
         return res.AsQueryable();
+    }
+
+    public async Task<ProductResponse> RetrieveProductByIDAsync(Guid id)
+    {
+        var res=await _productsRepository.GetProductByConditionAsync(_=>_.ProductId==id);
+        var theResponse=res.FirstOrDefault(_=>true);
+        return _mapper.Map<ProductResponse>(theResponse);
+    }
+    public async Task<IQueryable<ProductResponse>> RetrieveProductByNameAsync(string name)
+    {
+        return await RetrieveSpecificProductsAsync(_=>_.Name==name);
+    }
+
+    public async Task<IEnumerable<ProductResponse>> FilteringAsync
+    (string? name,
+    Guid? categoryId, Guid? brandId,
+    decimal? minPrice,decimal? maxPrice,
+    int? PageSize=10, int? PageNum=1,
+    TypeOfSorted? typeOfSorted = TypeOfSorted.ASCENDING,
+    SortOrder? sortOrder=SortOrder.Name)
+    {
+        IEnumerable<ProductResponse> responses;
+        if(categoryId is not null)
+        {
+            var lsit=await _productsRepository.GetProductByConditionAsync(_=>_.CategoryId==categoryId);
+            responses=lsit.Select(_=>_mapper.Map<ProductResponse>(_));
+        }
+        else
+        {
+            var lsit=await _productsRepository.GetProductsAsync();
+            responses=lsit.Select(_=>_mapper.Map<ProductResponse>(_));
+        }
+
+        if(brandId is not null)
+            responses=responses.Where(_=>_.BrandId==brandId);
+
+        if(name is not null)
+            responses=responses.Where(_=>_.Name==name);
+
+        if(minPrice is not null)
+            responses=responses.Where(_=>_.Price>=minPrice);
+
+        if(maxPrice is not null)
+            responses=responses.Where(_=>_.Price<=maxPrice);
+
+        int totalOfRecoreds=responses.Count(),pageSize= PageSize ?? 10,numOfPages=totalOfRecoreds/pageSize ,pageNum=PageNum ?? 1;
+        responses=responses.Select(_=>{_.PageNumber=pageNum;_.NumberOfPage=numOfPages;_.totalNumOfRecoreds=totalOfRecoreds; return _;});
+        responses=responses.Skip((pageNum-1)*pageSize).Take(pageSize);
+
+        // responses=typeOfSorted is not null? responses : typeOfSorted==TypeOfSorted.DESCENDING? responses.OrderBy(_=>_.)
+
+        if(typeOfSorted is not null)
+        {
+            if(typeOfSorted==TypeOfSorted.DESCENDING)
+            {
+                if(sortOrder is not null)
+                {
+                    if(sortOrder==SortOrder.Name)
+                    {
+                        responses=responses.OrderByDescending(_=>_.Name);
+                    }
+                    else
+                    {
+                        responses=responses.OrderByDescending(_=>_.Price);
+                    }
+                }
+            }
+            else
+            {
+                if(sortOrder is not null)
+                {
+                    if(sortOrder==SortOrder.Name)
+                    {
+                        responses=responses.OrderBy(_=>_.Name);
+                    }
+                    else
+                    {
+                        responses=responses.OrderBy(_=>_.Price);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if(sortOrder is not null)
+            {
+                if(sortOrder==SortOrder.Name)
+                {
+                    responses=responses.OrderBy(_=>_.Name);
+                }
+                else
+                {
+                    responses=responses.OrderBy(_=>_.Price);
+                }
+            }
+        }
+        return responses;
     }
 }

@@ -11,4 +11,8 @@ public class ProductResponse
     public Guid CategoryId {get;set;}
     public Guid BrandId{get;set;}
     public ICollection<ProductVariant> Variants{ get; set; } = new List<ProductVariant>();
+
+    public int? totalNumOfRecoreds{get;set;}
+    public int? NumberOfPage{get;set;}
+    public int? PageNumber{get;set;}
 }

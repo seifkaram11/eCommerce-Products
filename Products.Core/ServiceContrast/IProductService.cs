@@ -1,13 +1,21 @@
 using Products.Core.DTOs;
-using Products.Core.Entitys;
+using Products.Core.Enums;
 
 namespace Products.Core.ServiceContrast;
 
-interface IProductService
+public interface IProductService
 {
     Task<IQueryable<ProductResponse>> RetrieveAllProductsAsync();
-    Task<IQueryable<ProductResponse>> RetrieveSpecificProductsAsync(Func<Product, bool> func);
+    Task<ProductResponse> RetrieveProductByIDAsync(Guid id);
+    Task<IQueryable<ProductResponse>> RetrieveProductByNameAsync(string name);
     Task<ProductResponse?> AddProductAsync(ProductAddRequest request);
-    Task<ProductResponse?> UpdateProductAsync(ProductUpdateRequest product);
+    Task<ProductResponse?> UpdateProductAsync(Guid id,ProductUpdateRequest product);
     Task<ProductResponse?> DeleteProductAsync(Guid id);
+    Task<IEnumerable<ProductResponse>> FilteringAsync
+    (string? name,
+    Guid? categoryId, Guid? brandId,
+    decimal? minPrice,decimal? maxPrice,
+    int? PageSize=10, int? PageNum=1,
+    TypeOfSorted? typeOfSorted = TypeOfSorted.ASCENDING,
+    SortOrder? sortOrder=SortOrder.Name);
 }
