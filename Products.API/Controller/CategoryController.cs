@@ -1,52 +1,66 @@
 using Microsoft.AspNetCore.Mvc;
 using Products.Core.DTOs;
-using Products.Core.Entitys;
+using Products.Core.Enums;
+using Products.Core.ServiceContrast;
 
 namespace Products.API.Containers;
 
 [ApiController]
-[Route("api/1/Categorys")]
+[Route("api/V1/Categories")]
 public class CategoryController:ControllerBase
 {
-    [HttpGet]
-    public async Task<ActionResult> GetCategorys(CategoryAddRequest addRequest)
+    ICategoryService _categoryService;
+
+    public CategoryController(ICategoryService categoryService)
     {
-        List<CategoryResponse> response=new();
-        return Ok();
+        _categoryService = categoryService;
     }
 
-    [HttpGet("/{id:guid}")]
+    [HttpGet]
+    public async Task<ActionResult> GetCategories
+    ([FromQuery]string? name,
+    [FromQuery]Guid? ParentCategoryId,
+    [FromQuery] int? PageSize=10,[FromQuery]int? PageNum=1,
+    [FromQuery] TypeOfSorted? typeOfSorted=TypeOfSorted.ASCENDING)
+    {
+        return Ok(await _categoryService.FilteringAsync
+        (
+            name,
+            ParentCategoryId,
+            PageSize, PageNum,
+            typeOfSorted
+        ));
+    }
+
+    [HttpGet("{id:guid}")]
     public async Task<ActionResult> GetCategoryById(Guid id)
     {
-        CategoryResponse response=new();
-        return Ok();
-    }
-
-    [HttpGet("search/{name:string}")]
-    public async Task<ActionResult> GetCategoryByName(string name)
-    {
-        List<CategoryResponse> response=new();
-        return Ok();
+        var response=await _categoryService.RetrieveCategoryByIDAsync(id);
+        if(response is null)return BadRequest();
+        return Ok(response);
     }
 
     [HttpPost]
-    public async Task<ActionResult> AddProducts(CategoryAddRequest product)
+    public async Task<ActionResult> AddCategory(CategoryAddRequest request)
     {
-        CategoryResponse response=new();
-        return Ok();
+        var response=await _categoryService.AddCategoryAsync(request);
+        if(response is null)return BadRequest();
+        return Ok(response);
     }
 
-    [HttpPut]
-    public async Task<ActionResult> UpdateProducts(CategoryUpdateRequest updateRequest)
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult> UpdateCategory(Guid id,CategoryUpdateRequest updateRequest)
     {
-        CategoryResponse response=new();
-        return Ok();
+        var response=await _categoryService.UpdateCategoryAsync(id,updateRequest);
+        if(response is null)return BadRequest();
+        return Ok(response);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<ActionResult> DeleteProducts(Guid id)
+    [HttpDelete("{id:guid}")]
+    public async Task<ActionResult> DeleteCategory(Guid id)
     {
-        CategoryResponse response=new();
-        return Ok();
+        var response=await _categoryService.DeleteCategoryAsync(id);
+        if(response is null)return BadRequest("the category is not found");
+        return Ok(response);
     }
 }

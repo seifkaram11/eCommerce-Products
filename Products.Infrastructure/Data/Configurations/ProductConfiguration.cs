@@ -22,6 +22,6 @@ class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder.HasOne(_=>_.Brand).WithMany(_=>_.Products).HasForeignKey(_=>_.BrandId).OnDelete(DeleteBehavior.Restrict);
 
-        builder.ToTable(nameof(Product));
+        builder.ToTable("Products");
     }
 }

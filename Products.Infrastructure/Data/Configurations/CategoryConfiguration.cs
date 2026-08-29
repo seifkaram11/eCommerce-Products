@@ -17,6 +17,6 @@ class CategoryConfiguration : IEntityTypeConfiguration<Category>
 
         builder.HasMany(_=>_.Products).WithOne(_=>_.Category).HasForeignKey(_=>_.CategoryId).OnDelete(DeleteBehavior.Restrict);
 
-        builder.ToTable(nameof(Category));
+        builder.ToTable("Categories");
     }
 }

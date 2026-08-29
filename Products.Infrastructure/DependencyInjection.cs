@@ -11,6 +11,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection service)
     {
         service.AddScoped<IProductsRepository,ProductsRepository>();
+        service.AddScoped<ICategoryRepository,CategoryRepository>();
         service.AddDbContext<ProductDbContext>();
         return service;
     }

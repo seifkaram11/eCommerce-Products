@@ -21,7 +21,7 @@ public class ProductController:ControllerBase
     {
         var response=await _productService.RetrieveProductByIDAsync(id);
         if(response is null)return BadRequest();
-        return Ok();
+        return Ok(response);
     }
 
     [HttpGet]

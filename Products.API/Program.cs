@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 var app = builder.Build();
-// app.UseExceptionHandlingMiddleware();
+app.UseExceptionHandlingMiddleware();
 
 
 app.UseRouting();
@@ -38,4 +38,5 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapControllers();
 app.Run();

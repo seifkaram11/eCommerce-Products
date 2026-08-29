@@ -4,5 +4,5 @@ public class CategoryAddRequest
 {
     public string Name { get; set; } = null!;
     public string? Description { get; set; }
-    public Guid? ParentCategory { get; set; }
+    public Guid? ParentCategoryId { get; set; }
 }

@@ -4,17 +4,18 @@ using Products.Core.Entitys;
 
 namespace Products.Infrastructure.Data;
 
-class ProductDbContext(IConfiguration _configuration):DbContext
+public class ProductDbContext(IConfiguration _configuration):DbContext
 {
     public DbSet<Product> Products{get;set;}
+    public DbSet<Category> Categories{get;set;}
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
 
-        optionsBuilder.UseMySql(_configuration.GetConnectionString("MySSQL"),
-            ServerVersion.AutoDetect(_configuration.GetConnectionString("MySSQL")));
+        optionsBuilder.UseMySql(_configuration.GetConnectionString("MySQL"),
+            ServerVersion.AutoDetect(_configuration.GetConnectionString("MySQL")));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

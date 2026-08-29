@@ -5,7 +5,7 @@ using Products.Infrastructure.Data;
 
 namespace Products.Infrastructure.Repository;
 
-class ProductsRepository : IProductsRepository
+public class ProductsRepository : IProductsRepository
 {
     ProductDbContext _productDbContext;
 
@@ -40,18 +40,18 @@ class ProductsRepository : IProductsRepository
         return _productDbContext.Products;
     }
 
-    public async Task<Product?> UpdateProductAsync(Product product)
+    public async Task<bool> UpdateProductAsync(Product product)
     {
-        if(product is null)return null;
+        if(product is null)return false;
 
-        var numOfRowsEffected=await _productDbContext.Products.Where(_=>_.ProductId==product.ProductId).ExecuteUpdateAsync(setters => setters
+        var numOfRowsEffected=await _productDbContext.Products.Where(_=>_.ProductId==product.ProductId).ExecuteUpdateAsync(set => set
             .SetProperty(p => p.Name, product.Name)
             .SetProperty(p => p.Price, product.Price)
             .SetProperty(p => p.Description, product.Description)
             .SetProperty(p => p.CategoryId, product.CategoryId)
             .SetProperty(p => p.BrandId, product.BrandId));
 
-        return numOfRowsEffected==1? product:null;
+        return numOfRowsEffected==1? true:false;
     }
 
     public async Task<int> SaveChangesAsync()

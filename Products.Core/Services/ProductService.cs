@@ -56,8 +56,14 @@ class ProductService : IProductService
         var product=_mapper.Map<Product>(request);
         product.ProductId=id;
         var res=await _productsRepository.UpdateProductAsync(product);
+        if(!res) return null;
         int numOfRowsEffected=await _productsRepository.SaveChangesAsync();
-        return numOfRowsEffected>0?_mapper.Map<ProductResponse>(res):null;
+        if(numOfRowsEffected>0)
+        {
+            var returnValue=await _productsRepository.GetProductByConditionAsync(_=>_.ProductId==id);
+            return _mapper.Map<ProductResponse>(returnValue);
+        }
+        return null;
     }
 
     public async Task<IQueryable<ProductResponse>> RetrieveAllProductsAsync()
@@ -107,7 +113,7 @@ class ProductService : IProductService
         if(maxPrice is not null)
             responses=responses.Where(_=>_.Price<=maxPrice);
 
-        int totalOfRecoreds=responses.Count(),pageSize= PageSize ?? 10,numOfPages=totalOfRecoreds/pageSize ,pageNum=PageNum ?? 1;
+        int totalOfRecoreds=responses.Count(),pageSize= PageSize ?? 10,numOfPages=(int)Math.Ceiling((double)totalOfRecoreds / pageSize),pageNum=PageNum ?? 1;
         responses=responses.Select(_=>{_.PageNumber=pageNum;_.NumberOfPage=numOfPages;_.totalNumOfRecoreds=totalOfRecoreds; return _;});
         responses=responses.Skip((pageNum-1)*pageSize).Take(pageSize);
 
