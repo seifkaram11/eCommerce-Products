@@ -8,7 +8,7 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.API/Products.API.csproj",
-        "projectName": "Products.API",
+        "projectName": "Products",
         "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.API/Products.API.csproj",
         "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
         "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.API/obj/",
