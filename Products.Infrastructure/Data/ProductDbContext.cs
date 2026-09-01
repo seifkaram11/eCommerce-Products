@@ -13,9 +13,9 @@ public class ProductDbContext(IConfiguration _configuration):DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-
-        optionsBuilder.UseMySql(_configuration.GetConnectionString("MySQL"),
-            ServerVersion.AutoDetect(_configuration.GetConnectionString("MySQL")));
+        string connString=_configuration.GetConnectionString("MySQL");
+        optionsBuilder.UseMySql(connString,
+            ServerVersion.AutoDetect(connString));
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
