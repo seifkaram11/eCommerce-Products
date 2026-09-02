@@ -1,0 +1,15 @@
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/bin/Debug/net10.0/Products.Core.deps.json
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/bin/Debug/net10.0/Products.Core.runtimeconfig.json
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/bin/Debug/net10.0/Products.Core.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/bin/Debug/net10.0/Products.Core.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.csproj.AssemblyReference.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.GeneratedMSBuildEditorConfig.editorconfig
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.AssemblyInfoInputs.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.AssemblyInfo.cs
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.csproj.CoreCompileInputs.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.sourcelink.json
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/refint/Products.Core.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/Products.Core.genruntimeconfig.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Products.Core/obj/Debug/net10.0/ref/Products.Core.dll
