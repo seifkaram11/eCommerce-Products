@@ -3,17 +3,17 @@ FROM mcr.microsoft.com/dotnet/sdk:10 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY ["Products.API/Products.API.csproj", "Products.API/"]
-COPY ["Products.Core/Products.Core.csproj", "Products.Core/"]
-COPY ["Products.Infrastructure/Products.Infrastructure.csproj", "Products.Infrastructure/"]
+COPY ["API/API.csproj", "API/"]
+COPY ["Core/Core.csproj", "Core/"]
+COPY ["Infrastructure/Infrastructure.csproj", "Infrastructure/"]
 
-RUN dotnet restore "Products.API/Products.API.csproj"
+RUN dotnet restore "API/API.csproj"
 
 COPY . .
 
-WORKDIR /src/Products.API
+WORKDIR /src/API
 
-RUN dotnet build "Products.API.csproj" \
+RUN dotnet build "API.csproj" \
     -c $BUILD_CONFIGURATION \
     -o /app/build
 
@@ -22,7 +22,7 @@ FROM build AS publish
 
 ARG BUILD_CONFIGURATION=Release
 
-RUN dotnet publish "Products.API.csproj" \
+RUN dotnet publish "API.csproj" \
     -c $BUILD_CONFIGURATION \
     -o /app/publish \
     /p:UseAppHost=false

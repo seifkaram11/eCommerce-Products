@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P1Djvyfynq4=",
+  "dgSpecHash": "I8yTXwW/IC4=",
   "success": true,
-  "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/Products.API.csproj",
+  "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/API.csproj",
   "expectedPackageFiles": [
     "/home/seifel-dinkaram/.nuget/packages/automapper/16.2.0/automapper.16.2.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mNFS2vLYFj4=",
+  "dgSpecHash": "vEQ0HITyu3o=",
   "success": true,
-  "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj",
+  "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj",
   "expectedPackageFiles": [
     "/home/seifel-dinkaram/.nuget/packages/automapper/16.2.0/automapper.16.2.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
@@ -61,9 +61,9 @@
       "code": "NU1608",
       "level": "Warning",
       "message": "Detected package version outside of dependency constraint: Pomelo.EntityFrameworkCore.MySql 9.0.0 requires Microsoft.EntityFrameworkCore.Relational (>= 9.0.0 && <= 9.0.999) but version Microsoft.EntityFrameworkCore.Relational 10.0.11 was resolved.",
-      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj",
+      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj",
       "warningLevel": 1,
-      "filePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj",
+      "filePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj",
       "libraryId": "Microsoft.EntityFrameworkCore.Relational",
       "targetGraphs": [
         "net10.0"

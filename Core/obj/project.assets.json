@@ -3505,9 +3505,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj",
-      "projectName": "Products.Core",
-      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj",
+      "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj",
+      "projectName": "Core",
+      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj",
       "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
       "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/obj/",
       "projectStyle": "PackageReference",

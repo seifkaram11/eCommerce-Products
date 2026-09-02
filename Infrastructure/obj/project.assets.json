@@ -649,7 +649,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Products.Core/1.0.0": {
+      "Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v10.0",
         "dependencies": {
@@ -660,10 +660,10 @@
           "Swashbuckle.AspNetCore": "10.2.3"
         },
         "compile": {
-          "bin/placeholder/Products.Core.dll": {}
+          "bin/placeholder/Core.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Products.Core.dll": {}
+          "bin/placeholder/Core.dll": {}
         }
       }
     }
@@ -1859,22 +1859,22 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
-    "Products.Core/1.0.0": {
+    "Core/1.0.0": {
       "type": "project",
-      "path": "../Core/Products.Core.csproj",
-      "msbuildProject": "../Core/Products.Core.csproj"
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
+      "Core >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 9.0.0",
       "Microsoft.EntityFrameworkCore.Relational >= 9.0.0",
       "Microsoft.Extensions.Configuration >= 10.0.11",
       "Microsoft.Extensions.Configuration.Json >= 10.0.11",
       "Microsoft.Extensions.Configuration.UserSecrets >= 10.0.11",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 10.0.11",
-      "Pomelo.EntityFrameworkCore.MySql >= 9.0.0",
-      "Products.Core >= 1.0.0"
+      "Pomelo.EntityFrameworkCore.MySql >= 9.0.0"
     ]
   },
   "packageFolders": {
@@ -1883,9 +1883,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Infrastructure/Products.Infrastructure.csproj",
-      "projectName": "Products.Infrastructure",
-      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Infrastructure/Products.Infrastructure.csproj",
+      "projectUniqueName": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Infrastructure/Infrastructure.csproj",
+      "projectName": "Infrastructure",
+      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Infrastructure/Infrastructure.csproj",
       "packagesPath": "/home/seifel-dinkaram/.nuget/packages/",
       "outputPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Infrastructure/obj/",
       "projectStyle": "PackageReference",
@@ -1903,8 +1903,8 @@
         "net10.0": {
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj": {
-              "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Products.Core.csproj"
+            "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj": {
+              "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Core/Core.csproj"
             }
           }
         }
