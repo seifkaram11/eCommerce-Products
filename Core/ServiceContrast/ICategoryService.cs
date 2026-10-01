@@ -5,7 +5,7 @@ namespace Products.Core.ServiceContrast;
 
 public interface ICategoryService
 {
-    Task<IQueryable<CategoryResponse>> RetrieveAllCategorysAsync();
+    Task<IEnumerable<CategoryResponse>> RetrieveAllCategorysAsync();
     Task<CategoryResponse?> RetrieveCategoryByIDAsync(Guid id);
     Task<CategoryResponse?> AddCategoryAsync(CategoryAddRequest request);
     Task<CategoryResponse?> UpdateCategoryAsync(Guid id,CategoryUpdateRequest request);

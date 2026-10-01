@@ -1,4 +1,6 @@
+using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using Products.Core.Entitys;
 using Products.Core.RepositoryContrast;
 using Products.Infrastructure.Data;
@@ -7,65 +9,107 @@ namespace Products.Infrastructure.Repository;
 
 public class CategoryRepository : ICategoryRepository
 {
-    ProductDbContext _productDbContext;
+    private readonly ProductDbContext _productDbContext;
+    private readonly ILogger<CategoryRepository> _logger;
 
-    public CategoryRepository(ProductDbContext productDbContext)
+    public CategoryRepository(ProductDbContext productDbContext, ILogger<CategoryRepository> logger)
     {
         _productDbContext = productDbContext;
+        _logger = logger;
     }
 
     public async Task<Category?> AddCategoryAsync(Category category)
     {
-        if(category is null)return null;
+        if (category is null) return null;
 
-        var res=await _productDbContext.Categories.AddAsync(category);
+        var res = await _productDbContext.Categories.AddAsync(category);
         return res.Entity;
     }
 
     public async Task<Category?> DeleteCategoryAsync(Guid id)
     {
-        var category=await _productDbContext.Categories.FirstOrDefaultAsync(_=>_.CategoryId==id);
-        if(category is null) return null;
-        var res=_productDbContext.Categories.Remove(category);
+        var category = await _productDbContext.Categories
+            .FirstOrDefaultAsync(c => c.CategoryId == id);
+
+        if (category is null) return null;
+
+        var res = _productDbContext.Categories.Remove(category);
         return res.Entity;
     }
 
-    public async Task<IEnumerable<Category>> GetCategoryByConditionAsync(Func<Category, bool> func)
+    public async Task<Category?> GetByIdAsync(Guid id, bool track = false)
     {
-        return _productDbContext.Categories.Where(func);
+        IQueryable<Category> query = _productDbContext.Categories;
+        if (!track) query = query.AsNoTracking();
+
+        return await query.FirstOrDefaultAsync(c => c.CategoryId == id);
     }
 
-    public async Task<IEnumerable<Category>> GetCategorysAsync()
+    public async Task<IReadOnlyList<Category>> GetCategoryByConditionAsync(
+        Expression<Func<Category, bool>> predicate)
     {
-        return _productDbContext.Categories;
+        return await _productDbContext.Categories
+            .AsNoTracking()
+            .Where(predicate)
+            .ToListAsync();
+    }
+
+    public async Task<IReadOnlyList<Category>> GetCategorysAsync()
+    {
+        return await _productDbContext.Categories
+            .AsNoTracking()
+            .ToListAsync();
+    }
+
+    public async Task<(IReadOnlyList<Category> Items, int Total)> GetPagedAsync(
+        string? name, Guid? parentCategoryId, bool descending, int page, int size)
+    {
+        var query = _productDbContext.Categories.AsNoTracking().AsQueryable();
+
+        if (parentCategoryId is not null)
+            query = query.Where(c => c.ParentCategoryId == parentCategoryId);
+
+        if (!string.IsNullOrWhiteSpace(name))
+            query = query.Where(c => c.Name == name);
+
+        var total = await query.CountAsync();
+
+        query = descending
+            ? query.OrderByDescending(c => c.Name)
+            : query.OrderBy(c => c.Name);
+
+        var items = await query
+            .Skip((page - 1) * size)
+            .Take(size)
+            .ToListAsync();
+
+        return (items, total);
+    }
+
+    public async Task<bool> UpdateCategoryAsync(Category category)
+    {
+        if (category is null) return false;
+
+        var rows = await _productDbContext.Categories
+            .Where(c => c.CategoryId == category.CategoryId)
+            .ExecuteUpdateAsync(set => set
+                .SetProperty(p => p.Name, category.Name)
+                .SetProperty(p => p.Description, category.Description)
+                .SetProperty(p => p.ParentCategoryId, category.ParentCategoryId));
+
+        return rows > 0;
     }
 
     public async Task<int> SaveChangesAsync()
     {
         try
         {
-            return _productDbContext.SaveChanges();
+            return await _productDbContext.SaveChangesAsync();
         }
         catch (DbUpdateException ex)
         {
-            Console.WriteLine($"Message: {ex.Message}");
-            Console.WriteLine($"Inner: {ex.InnerException?.Message}");
-            Console.WriteLine($"Inner Inner: {ex.InnerException?.InnerException?.Message}");
-
+            _logger.LogError(ex, "Failed to save category changes to the database.");
             throw;
         }
-    }
-
-    public async Task<bool> UpdateCategoryAsync(Category category)
-    {
-        if(category is null)return false;
-
-        var numOfRowsEffected=await _productDbContext.Categories.Where(_=>_.CategoryId==category.CategoryId).ExecuteUpdateAsync(set=>set.
-            SetProperty(p=>p.Name,category.Name)
-            .SetProperty(p=>p.Description,category.Description)
-            .SetProperty(p=>p.ParentCategory,category.ParentCategory)
-        );
-
-        return numOfRowsEffected>0? true:false;
     }
 }

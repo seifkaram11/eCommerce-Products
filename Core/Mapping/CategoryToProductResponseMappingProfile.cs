@@ -4,9 +4,9 @@ using Products.Core.Entitys;
 
 namespace Products.Core.Mapping;
 
-public class CategoryToProductResponseMappingProfile:Profile
+public class CategoryToCategoryResponseMappingProfile:Profile
 {
-    public CategoryToProductResponseMappingProfile()
+    public CategoryToCategoryResponseMappingProfile()
     {
         CreateMap<Category,CategoryResponse>();
     }

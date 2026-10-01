@@ -4,9 +4,9 @@ using Products.Core.Entitys;
 
 namespace Products.Core.Mapping;
 
-class CategoryUpdateRequestToProductMappingProfile :Profile
+public class CategoryUpdateRequestToCategoryMappingProfile :Profile
 {
-    public CategoryUpdateRequestToProductMappingProfile()
+    public CategoryUpdateRequestToCategoryMappingProfile()
     {
         CreateMap<CategoryUpdateRequest, Category>();
     }

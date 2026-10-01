@@ -52,3 +52,8 @@
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/obj/Debug/net10.0/Products.pdb
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/obj/Debug/net10.0/API.genruntimeconfig.cache
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/obj/Debug/net10.0/ref/Products.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/RESPite.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/StackExchange.Redis.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/System.IO.Hashing.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/Redis.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/Redis.pdb

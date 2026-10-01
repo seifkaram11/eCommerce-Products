@@ -1,0 +1,16 @@
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/bin/Debug/net10.0/Redis.deps.json
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/bin/Debug/net10.0/Redis.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/bin/Debug/net10.0/Redis.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/bin/Debug/net10.0/Core.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/bin/Debug/net10.0/Core.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.csproj.AssemblyReference.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.GeneratedMSBuildEditorConfig.editorconfig
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.AssemblyInfoInputs.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.AssemblyInfo.cs
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.csproj.CoreCompileInputs.cache
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.sourcelink.json
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.csproj.Up2Date
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/refint/Redis.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/Redis.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/Redis/obj/Debug/net10.0/ref/Redis.dll

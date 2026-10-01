@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using Products.Core.DTOs;
 using Products.Core.RepositoryContrast;
 using Products.Infrastructure.Data;
 using Products.Infrastructure.Repository;
@@ -12,6 +11,7 @@ public static class DependencyInjection
     {
         service.AddScoped<IProductsRepository,ProductsRepository>();
         service.AddScoped<ICategoryRepository,CategoryRepository>();
+        service.AddScoped<IBrandRepository,BrandRepository>();
         service.AddDbContext<ProductDbContext>();
         return service;
     }

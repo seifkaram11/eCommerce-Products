@@ -2,6 +2,7 @@ using FluentValidation.AspNetCore;
 using Products.API.Middleware;
 using Products.Core;
 using Products.Infrastructure;
+using Products.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddCore();
 builder.Services.AddInfrastructure();
+builder.Services.AddRedis();
 
 builder.Services.AddFluentValidationAutoValidation();
 

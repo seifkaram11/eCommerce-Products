@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "I8yTXwW/IC4=",
+  "dgSpecHash": "I31v544NDD4=",
   "success": true,
   "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/API.csproj",
   "expectedPackageFiles": [
@@ -21,10 +21,13 @@
     "/home/seifel-dinkaram/.nuget/packages/microsoft.openapi/2.7.5/microsoft.openapi.2.7.5.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/mysqlconnector/2.4.0/mysqlconnector.2.4.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0/pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/respite/3.3.1/respite.3.3.1.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/stackexchange.redis/3.3.1/stackexchange.redis.3.3.1.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore/10.2.3/swashbuckle.aspnetcore.10.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore.swagger/10.2.3/swashbuckle.aspnetcore.swagger.10.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore.swaggergen/10.2.3/swashbuckle.aspnetcore.swaggergen.10.2.3.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.2.3/swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512"
+    "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.2.3/swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/system.io.hashing/10.0.12/system.io.hashing.10.0.12.nupkg.sha512"
   ],
   "logs": []
 }

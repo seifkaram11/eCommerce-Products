@@ -14,6 +14,7 @@ public static class DependencyInjection
         services.AddAutoMapper(cfg => { },typeof(DependencyInjection).Assembly);
         services.AddScoped<IProductService,ProductService>();
         services.AddScoped<ICategoryService,CategoryService>();
+        services.AddScoped<IBrandServices,BrandServices>();
         services.AddValidatorsFromAssemblyContaining<ProductAddRequestValidator>();
         return services;
     }

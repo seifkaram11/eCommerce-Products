@@ -15,6 +15,6 @@ class ProductVariantConfiguration : IEntityTypeConfiguration<ProductVariant>
 
         builder.HasOne(_=>_.Product).WithMany(_=>_.Variants).HasForeignKey(_=>_.ProductId).OnDelete(DeleteBehavior.Cascade);
 
-        builder.ToTable(nameof(ProductVariant));
+        builder.ToTable("ProductVariants");
     }
 }

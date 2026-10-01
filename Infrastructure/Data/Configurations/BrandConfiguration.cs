@@ -16,6 +16,6 @@ class BrandConfiguration : IEntityTypeConfiguration<Brand>
 
         builder.HasMany(_=>_.Products).WithOne(_=>_.Brand).HasForeignKey(_=>_.BrandId);
 
-        builder.ToTable(nameof(Brand));
+        builder.ToTable("Brands");
     }
 }
