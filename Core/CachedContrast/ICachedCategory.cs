@@ -7,12 +7,13 @@ public interface ICachedCategory
 {
     Task<bool> AddCategoryAsync(Category request);
     Task<Category?> DeleteCategoryAsync(Guid id);
-    Task<IEnumerable<Category>> RetrieveAllCategoriesAsync();
+    Task<IEnumerable<Category>> RetrieveAllCategoriesAsync(int? pageNum=1,int? pageSize=10);
     Task<Category?> RetrieveCategoryByIDAsync(Guid id);
     Task<Category?> UpdateCategoryAsync(Guid id, Category request);
     Task<bool> IsCategoryExistsAsync(Guid id);
     Task<IEnumerable<Category>> FilteringAsync(
     string? name,
     Guid? parentCategoryId,
-    bool descending);
+    bool descending,
+    int? pageNum=1, int? pageSize=10);
 }

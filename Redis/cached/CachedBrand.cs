@@ -43,10 +43,15 @@ public class CachedBrand : ICachedBrand
         return await _db.KeyExistsAsync(KeyOf(id));
     }
 
-    public async Task<IQueryable<Brand>> RetrieveAllBrandsAsync()
+    public async Task<IQueryable<Brand>> RetrieveAllBrandsAsync(int? pageNum=1, int? pageSize=10)
     {
         var ids = await _db.SetMembersAsync(IndexKey);
         var brands = new List<Brand>();
+
+        if(pageNum is null)pageNum=1;
+        if(pageSize is null)pageSize=10;
+        int PageNum=(int)pageNum!,PageSize=(int)pageSize!;
+        ids=ids.Skip(PageSize*(PageNum-1)).Take(PageSize).ToArray();
 
         foreach (var member in ids)
         {
@@ -120,20 +125,18 @@ public class CachedBrand : ICachedBrand
         {
             BrandId = id,
             Name = name.ToString(),
-            Description = map.TryGetValue("Description", out var d) && !d.IsNullOrEmpty
-                ? d.ToString()
-                : null,
-            LogoUrl = map.TryGetValue("LogoUrl", out var l) && !l.IsNullOrEmpty
-                ? l.ToString()
-                : null
+            Description = map.TryGetValue("Description", out var d) && !d.IsNullOrEmpty? d.ToString(): null,
+            LogoUrl = map.TryGetValue("LogoUrl", out var l) && !l.IsNullOrEmpty? l.ToString(): null
         };
     }
 
     public async Task<IEnumerable<Brand>> FilteringAsync(
-    string? name,
-    bool descending)
+        string? name,
+        bool descending,
+        int? pageNum=1, int? pageSize=10
+        )
     {
-        var categories = await RetrieveAllBrandsAsync();
+        var categories = await RetrieveAllBrandsAsync(pageNum,pageSize);
         if (categories is null || !categories.Any())
             return Enumerable.Empty<Brand>();
 
@@ -143,9 +146,7 @@ public class CachedBrand : ICachedBrand
                 c.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
         }
 
-        categories = descending
-            ? categories.OrderByDescending(c => c.Name)
-            : categories.OrderBy(c => c.Name);
+        categories = descending? categories.OrderByDescending(c => c.Name): categories.OrderBy(c => c.Name);
 
         return categories;
     }

@@ -120,7 +120,7 @@ public class BrandServices : IBrandServices
         var page = Math.Max(PageNum ?? 1, 1);
         var descending = typeOfSorted == TypeOfSorted.DESCENDING;
 
-        var items = await _cachedBrand.FilteringAsync(name,descending);
+        var items = await _cachedBrand.FilteringAsync(name,descending,PageNum,PageSize);
 
         if(items is null || !items.Any())
         {

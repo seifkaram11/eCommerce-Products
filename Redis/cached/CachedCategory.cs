@@ -43,10 +43,15 @@ public class CachedCategory : ICachedCategory
         return await _db.KeyExistsAsync(KeyOf(id));
     }
 
-    public async Task<IEnumerable<Category>> RetrieveAllCategoriesAsync()
+    public async Task<IEnumerable<Category>> RetrieveAllCategoriesAsync(int? pageNum=1,int? pageSize=10)
     {
         var ids = await _db.SetMembersAsync(IndexKey);
         var categories = new List<Category>();
+
+        if(pageNum is null)pageNum=1;
+        if(pageSize is null)pageSize=10;
+        int PageNum=(int)pageNum!,PageSize=(int)pageSize!;
+        ids=ids.Skip(PageSize*(PageNum-1)).Take(PageSize).ToArray();
 
         foreach (var member in ids)
         {
@@ -130,9 +135,10 @@ public class CachedCategory : ICachedCategory
     public async Task<IEnumerable<Category>> FilteringAsync(
     string? name,
     Guid? parentCategoryId,
-    bool descending)
+    bool descending,
+    int? pageNum=1, int? pageSize=10)
     {
-        var categories = await RetrieveAllCategoriesAsync();
+        var categories = await RetrieveAllCategoriesAsync(pageNum,pageSize);
         if (categories is null || !categories.Any())
             return Enumerable.Empty<Category>();
 

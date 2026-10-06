@@ -141,7 +141,7 @@ public class CategoryService : ICategoryService
         var page = Math.Max(PageNum ?? 1, 1);
         var descending = typeOfSorted == TypeOfSorted.DESCENDING;
 
-        var items = await _cachedCategory.FilteringAsync(name,ParentCategoryId,descending);
+        var items = await _cachedCategory.FilteringAsync(name,ParentCategoryId,descending,PageNum,PageSize);
 
         if(items is null || !items.Any())
         {
