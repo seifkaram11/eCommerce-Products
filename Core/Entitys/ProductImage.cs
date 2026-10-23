@@ -7,5 +7,5 @@ public class ProductImage
     public int DisplayOrder { get; set; }
     public bool IsPrimary { get; set; }
     public Guid ProductId { get; set; }
-    public Product Product { get; set; } = null!;
+    public virtual Product Product { get; set; } = null!;
 }

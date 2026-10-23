@@ -1,18 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "I31v544NDD4=",
+  "dgSpecHash": "cWTzoSjppAw=",
   "success": true,
   "projectFilePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/API.csproj",
   "expectedPackageFiles": [
     "/home/seifel-dinkaram/.nuget/packages/automapper/16.2.0/automapper.16.2.0.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/castle.core/5.2.1/castle.core.5.2.1.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/fluentvalidation.aspnetcore/11.3.1/fluentvalidation.aspnetcore.11.3.1.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.11.0/fluentvalidation.dependencyinjectionextensions.11.11.0.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/masstransit/9.2.3/masstransit.9.2.3.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/masstransit.abstractions/9.2.3/masstransit.abstractions.9.2.3.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/masstransit.entityframeworkcore/9.2.3/masstransit.entityframeworkcore.9.2.3.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/masstransit.rabbitmq/9.2.3/masstransit.rabbitmq.9.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.aspnetcore.openapi/10.0.11/microsoft.aspnetcore.openapi.10.0.11.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore/9.0.0/microsoft.entityframeworkcore.9.0.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.0/microsoft.entityframeworkcore.abstractions.9.0.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.analyzers/9.0.0/microsoft.entityframeworkcore.analyzers.9.0.0.nupkg.sha512",
-    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.0/microsoft.entityframeworkcore.relational.9.0.0.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore/10.0.13/microsoft.entityframeworkcore.10.0.13.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.abstractions/10.0.13/microsoft.entityframeworkcore.abstractions.10.0.13.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.analyzers/10.0.13/microsoft.entityframeworkcore.analyzers.10.0.13.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.proxies/10.0.13/microsoft.entityframeworkcore.proxies.10.0.13.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/microsoft.entityframeworkcore.relational/10.0.13/microsoft.entityframeworkcore.relational.10.0.13.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.extensions.apidescription.server/10.0.0/microsoft.extensions.apidescription.server.10.0.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
@@ -21,6 +27,7 @@
     "/home/seifel-dinkaram/.nuget/packages/microsoft.openapi/2.7.5/microsoft.openapi.2.7.5.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/mysqlconnector/2.4.0/mysqlconnector.2.4.0.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/pomelo.entityframeworkcore.mysql/9.0.0/pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512",
+    "/home/seifel-dinkaram/.nuget/packages/rabbitmq.client/7.2.2/rabbitmq.client.7.2.2.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/respite/3.3.1/respite.3.3.1.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/stackexchange.redis/3.3.1/stackexchange.redis.3.3.1.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore/10.2.3/swashbuckle.aspnetcore.10.2.3.nupkg.sha512",
@@ -29,5 +36,18 @@
     "/home/seifel-dinkaram/.nuget/packages/swashbuckle.aspnetcore.swaggerui/10.2.3/swashbuckle.aspnetcore.swaggerui.10.2.3.nupkg.sha512",
     "/home/seifel-dinkaram/.nuget/packages/system.io.hashing/10.0.12/system.io.hashing.10.0.12.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "message": "Detected package version outside of dependency constraint: Pomelo.EntityFrameworkCore.MySql 9.0.0 requires Microsoft.EntityFrameworkCore.Relational (>= 9.0.0 && <= 9.0.999) but version Microsoft.EntityFrameworkCore.Relational 10.0.13 was resolved.",
+      "projectPath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/API.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/API.csproj",
+      "libraryId": "Microsoft.EntityFrameworkCore.Relational",
+      "targetGraphs": [
+        "net10.0"
+      ]
+    }
+  ]
 }

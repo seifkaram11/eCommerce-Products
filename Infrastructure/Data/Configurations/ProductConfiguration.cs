@@ -12,7 +12,6 @@ class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.Property(_=>_.ProductId).HasColumnType("uniqueidentifier");
         builder.Property(_=>_.Name).HasColumnType("NVARCHAR").HasMaxLength(255);
         builder.Property(_=>_.Description).HasColumnType("TEXT");
-        builder.Property(_=>_.Price).HasColumnType("decimal");
 
         builder.HasOne(_=>_.Category).WithMany(_=>_.Products).HasForeignKey(_=>_.CategoryId).OnDelete(DeleteBehavior.Restrict);
 

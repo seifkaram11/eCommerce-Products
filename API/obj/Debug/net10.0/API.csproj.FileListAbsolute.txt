@@ -57,3 +57,10 @@
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/System.IO.Hashing.dll
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/Redis.dll
 /home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/Redis.pdb
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/MassTransit.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/MassTransit.Abstractions.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/MassTransit.EntityFrameworkCoreIntegration.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/MassTransit.RabbitMqTransport.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/RabbitMQ.Client.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/Castle.Core.dll
+/home/seifel-dinkaram/Backend/Projects/microservices/eCommerce/Products/API/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.Proxies.dll

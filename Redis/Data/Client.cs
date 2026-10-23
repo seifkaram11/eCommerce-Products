@@ -12,8 +12,7 @@ public class Client
 
         ConnectionMultiplexer redis = ConnectionMultiplexer.Connect(redisConnectionString);
 
-        var Db= redis.GetDatabase();
-        _db = Db;
+        _db = redis.GetDatabase();
     }
     public IDatabase GetDatabase()=>_db;
 }

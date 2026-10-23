@@ -10,6 +10,8 @@
         "dependencies": {
           "AutoMapper": "16.2.0",
           "FluentValidation.AspNetCore": "11.3.1",
+          "MassTransit.EntityFrameworkCore": "9.2.3",
+          "MassTransit.RabbitMQ": "9.2.3",
           "Microsoft.AspNetCore.OpenApi": "10.0.11",
           "Microsoft.EntityFrameworkCore.Design": "10.0.11",
           "Pomelo.EntityFrameworkCore.MySql": "9.0.0",
@@ -66,6 +68,49 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "MassTransit/9.2.3": {
+        "dependencies": {
+          "MassTransit.Abstractions": "9.2.3"
+        },
+        "runtime": {
+          "lib/net10.0/MassTransit.dll": {
+            "assemblyVersion": "9.2.3.0",
+            "fileVersion": "9.2.3.0"
+          }
+        }
+      },
+      "MassTransit.Abstractions/9.2.3": {
+        "runtime": {
+          "lib/net10.0/MassTransit.Abstractions.dll": {
+            "assemblyVersion": "9.2.3.0",
+            "fileVersion": "9.2.3.0"
+          }
+        }
+      },
+      "MassTransit.EntityFrameworkCore/9.2.3": {
+        "dependencies": {
+          "MassTransit": "9.2.3",
+          "Microsoft.EntityFrameworkCore.Relational": "10.0.11"
+        },
+        "runtime": {
+          "lib/net10.0/MassTransit.EntityFrameworkCoreIntegration.dll": {
+            "assemblyVersion": "9.2.3.0",
+            "fileVersion": "9.2.3.0"
+          }
+        }
+      },
+      "MassTransit.RabbitMQ/9.2.3": {
+        "dependencies": {
+          "MassTransit": "9.2.3",
+          "RabbitMQ.Client": "7.2.2"
+        },
+        "runtime": {
+          "lib/net10.0/MassTransit.RabbitMqTransport.dll": {
+            "assemblyVersion": "9.2.3.0",
+            "fileVersion": "9.2.3.0"
           }
         }
       },
@@ -513,6 +558,14 @@
           }
         }
       },
+      "RabbitMQ.Client/7.2.2": {
+        "runtime": {
+          "lib/net8.0/RabbitMQ.Client.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.2.2.0"
+          }
+        }
+      },
       "Swashbuckle.AspNetCore/10.2.3": {
         "dependencies": {
           "Swashbuckle.AspNetCore.Swagger": "10.2.3",
@@ -660,6 +713,34 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "MassTransit/9.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-exbI8yF4w8swAOj5cHiZVyWWWb/O/d0x1hBrD8nvFcAk4iMjEyvg1i+8zvgOsfYkSZp4horycBJVLAQPv1gFbw==",
+      "path": "masstransit/9.2.3",
+      "hashPath": "masstransit.9.2.3.nupkg.sha512"
+    },
+    "MassTransit.Abstractions/9.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-D0y98XbWq4Su8YCn1Y3WvQKy3Mn6SS5DGp1vkICy0TpPPzGQI6EPTMmITiim0KCf/WXgh/mRIP9UswIZVDuRjw==",
+      "path": "masstransit.abstractions/9.2.3",
+      "hashPath": "masstransit.abstractions.9.2.3.nupkg.sha512"
+    },
+    "MassTransit.EntityFrameworkCore/9.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6Lgb0SrV9nIkzz5Ir8w6ip7lZ0dj++xIwg9zUcVjViPMCmCPDlYr+WtNgKltmy+nHra0/e8wWERrOKi4Cdtp9w==",
+      "path": "masstransit.entityframeworkcore/9.2.3",
+      "hashPath": "masstransit.entityframeworkcore.9.2.3.nupkg.sha512"
+    },
+    "MassTransit.RabbitMQ/9.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-leInIa/ogii5hzKmqbU8DdlYGDUwODoUcIcx8Vlu4NZjjmGoiCdPybDdgeRpSt/ebmar0MHL9m4sainogXU6jQ==",
+      "path": "masstransit.rabbitmq/9.2.3",
+      "hashPath": "masstransit.rabbitmq.9.2.3.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/10.0.11": {
       "type": "package",
@@ -814,6 +895,13 @@
       "sha512": "sha512-cl7S4s6CbJno0LjNxrBHNc2xxmCliR5i40ATPZk/eTywVaAbHCbdc9vbGc3QThvwGjHqrDHT8vY9m1VF/47o0g==",
       "path": "pomelo.entityframeworkcore.mysql/9.0.0",
       "hashPath": "pomelo.entityframeworkcore.mysql.9.0.0.nupkg.sha512"
+    },
+    "RabbitMQ.Client/7.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-k4b6RnTXpLbsF96V93ooNYxgPMnoA2tEm24B6AXNJr1mG8wwNYdA1XJtgU66L5xqeGyveS7SJriRzlX3cbqQNA==",
+      "path": "rabbitmq.client/7.2.2",
+      "hashPath": "rabbitmq.client.7.2.2.nupkg.sha512"
     },
     "Swashbuckle.AspNetCore/10.2.3": {
       "type": "package",

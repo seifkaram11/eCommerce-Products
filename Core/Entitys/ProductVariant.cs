@@ -7,5 +7,5 @@ public class ProductVariant
     public decimal Price { get; set; }
 
     public Guid ProductId { get; set; }
-    public Product Product { get; set; } = null!;
+    public virtual Product Product { get; set; } = null!;
 }
